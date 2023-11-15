@@ -2,6 +2,7 @@
   "name": "classroom_frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://classroom-backend-delta.vercel.app",
   "dependencies": {
     "@material-tailwind/react": "^2.1.4",
     "@testing-library/jest-dom": "^5.17.0",

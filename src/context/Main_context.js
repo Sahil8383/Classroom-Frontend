@@ -13,10 +13,14 @@ const Context = ({ children }) => {
   const [theory, settheory] = useState("");
   const [panel, setpanel] = useState("theory");
 
+  const [loading, setloading] = useState(false);
+
   const getData = async () => {
-    await axios.get("http://localhost:4000/api/getClasses").then((res) => {
+    setloading(true);
+    await axios.get("https://classroom-backend-delta.vercel.app/api/getClasses").then((res) => {
       setallData(res.data.allClasses);
     });
+    setloading(false);
   };
   useEffect(() => {
     getData();
@@ -25,15 +29,15 @@ const Context = ({ children }) => {
   const getNavData = async (classId, subId, clsName,subName) => {
 
     if(!classId || !subId) return null;
-
+    setloading(true);
     await axios
-      .get(`http://localhost:4000/api/getSingleClass/${classId}/${subId}`)
+      .get(`https://classroom-backend-delta.vercel.app/api/getSingleClass/${classId}/${subId}`)
       .then((res) => {
-        // const val = clsName + " " + subName
         setclassName(clsName);
         setnavData(res.data);
         console.log("navData", res.data);
       });
+    setloading(false);
   };
 
   return (
@@ -51,6 +55,7 @@ const Context = ({ children }) => {
         settheory,
         panel,
         setpanel,
+        loading
       }}
     >
       {children}

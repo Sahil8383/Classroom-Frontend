@@ -11,7 +11,7 @@ import menu from "../../img/menu.png";
 import arrow from "../../img/arrow.png";
 
 const NavPanel = ({ cid, sid }) => {
-  const { allData, getNavData, navData, theory, settheory } =
+  const { allData, getNavData, navData, theory, settheory, loading } =
   useContext(MainContext);
 
   useEffect(() => {
@@ -28,6 +28,15 @@ const NavPanel = ({ cid, sid }) => {
   const [open, setOpen] = React.useState(0);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
+  if(loading){
+    return(
+      <div className="h-[100%] flex justify-center items-center">
+        <div className="text-3xl font-bold text-[#4a4e69]">Loading...</div>
+      </div>
+    )
+  }
+
 
   return (
     <>
