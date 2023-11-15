@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import arrow from "../../img/arrow.png";
 
 const Modal = ({ isVisible }) => {
-  const { setmodalVisible, allData, getNavData,className } = useContext(MainContext);
+  const { setmodalVisible, allData, getNavData, className, subName } = useContext(MainContext);
   const [open, setOpen] = React.useState(0);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
@@ -31,6 +31,9 @@ const Modal = ({ isVisible }) => {
   };
 
   if (!isVisible) return null;
+
+  console.log(subName);
+
   return (
     <>
       <div
@@ -41,7 +44,7 @@ const Modal = ({ isVisible }) => {
         <div className="bg-white w-[48vw] h-[50vh] rounded-[30px] p-7 pl-12">
           <div className="Title text-3xl font-bold mb-3">
             {
-              className ? className : "Select Class"
+              className  ? `${className} - ${subName}` : "Select Class"
             }
           </div>
           <div className="pr-4 h-[83%] overflow-auto">

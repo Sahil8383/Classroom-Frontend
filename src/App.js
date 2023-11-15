@@ -5,11 +5,8 @@ import { useContext } from "react";
 import { MainContext } from "./context/Main_context";
 import Body from "./components/Body/Body";
 import {
-  BrowserRouter as Router,
-  Switch,
   Route,
   Routes,
-  Link,
 } from "react-router-dom";
 
 function App() {

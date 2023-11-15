@@ -10,9 +10,9 @@ const Context = ({ children }) => {
   const [allData, setallData] = useState([]);
   const [navData, setnavData] = useState({});
   const [className, setclassName] = useState("");
+  const [subName, setsubName] = useState("");
   const [theory, settheory] = useState("");
   const [panel, setpanel] = useState("theory");
-
   const [loading, setloading] = useState(false);
 
   const getData = async () => {
@@ -26,16 +26,16 @@ const Context = ({ children }) => {
     getData();
   }, []);
 
-  const getNavData = async (classId, subId, clsName,subName) => {
-
-    if(!classId || !subId) return null;
+  const getNavData = async (classId, subId, clsName, subName) => {
+    setmodalVisible(false);
+    if (!classId || !subId) return null;
     setloading(true);
     await axios
       .get(`https://classroom-backend-delta.vercel.app/api/getSingleClass/${classId}/${subId}`)
       .then((res) => {
         setclassName(clsName);
+        setsubName(subName);
         setnavData(res.data);
-        console.log("navData", res.data);
       });
     setloading(false);
   };
@@ -50,6 +50,7 @@ const Context = ({ children }) => {
         getNavData,
         navData,
         className,
+        subName,
         setclassName,
         theory,
         settheory,

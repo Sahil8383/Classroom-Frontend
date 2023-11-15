@@ -7,7 +7,7 @@ import search from "../../img/search.png";
 
 const Header = () => {
   const { setmodalVisible } = useContext(MainContext);
-  const { navData, className } = useContext(MainContext);
+  const { className, subName } = useContext(MainContext);
 
   return (
     <>
@@ -20,7 +20,7 @@ const Header = () => {
           onClick={() => setmodalVisible(true)}
         >
           <div className="text-xl text-blue-500 font-bold">
-            {className ? className : "Select Subject"}
+            {className  ? `${className} - ${subName}` : "Select Class"}
           </div>
           <img className="h-[50%] fill-blue-500" src={arrow} alt="arrow" />
         </div>

@@ -9,14 +9,15 @@ import { MainContext } from "../../context/Main_context";
 import { useEffect } from "react";
 import menu from "../../img/menu.png";
 import arrow from "../../img/arrow.png";
+import { Spinner } from "@material-tailwind/react";
 
 const NavPanel = ({ cid, sid }) => {
-  const { allData, getNavData, navData, theory, settheory, loading } =
-  useContext(MainContext);
+  const { allData, getNavData, navData, theory, settheory, loading ,className, subName } =
+    useContext(MainContext);
 
   useEffect(() => {
-    if(!cid && !sid){
-      return(
+    if (!cid && !sid) {
+      return (
         <div className="h-[100%] flex justify-center items-center">
           <div className="text-3xl font-bold text-[#4a4e69]">Select Class and Subject</div>
         </div>
@@ -29,10 +30,10 @@ const NavPanel = ({ cid, sid }) => {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
-  if(loading){
-    return(
+  if (loading) {
+    return (
       <div className="h-[100%] flex justify-center items-center">
-        <div className="text-3xl font-bold text-[#4a4e69]">Loading...</div>
+        <Spinner className="h-12 w-12" />
       </div>
     )
   }
