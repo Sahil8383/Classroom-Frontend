@@ -6,13 +6,13 @@ const optionsQ1 = [
   { id: 1, text: "2" },
   { id: 2, text: "4" },
   { id: 3, text: "6" },
-  { id: 4, text: "8" },
+  { id: 4, text: "10" },
 ];
 
 const optionsQ2 = [
   { id: 1, text: "-8" },
   { id: 2, text: "-2" },
-  { id: 3, text: "6" },
+  { id: 3, text: "-10" },
   { id: 4, text: "8" },
 ];
 
